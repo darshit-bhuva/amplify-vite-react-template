@@ -9,6 +9,7 @@ backend:
     build:
       commands:
         - npm install
+        - cdk bootstrap aws://307302069467/$AWS_REGION
         - npx ampx pipeline-deploy --branch $AWS_BRANCH --app-id $AWS_APP_ID
 frontend:
   phases:
