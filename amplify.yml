@@ -6,10 +6,12 @@ backend:
         # Install the correct Node.js version (20.6 or higher)
         - nvm install 20.6
         - nvm use 20.6
+        - npm install -g aws-cdk@latest
+        - cdk --version
+        - cdk bootstrap aws://307302069467/$AWS_REGION || true
     build:
       commands:
         - npm install
-        - cdk bootstrap aws://307302069467/$AWS_REGION
         - npx ampx pipeline-deploy --branch $AWS_BRANCH --app-id $AWS_APP_ID
 frontend:
   phases:
